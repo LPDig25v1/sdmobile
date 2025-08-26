@@ -1,3 +1,55 @@
+/*function saudacoesFactory(saudacao, nome){
+    return function ()
+{}
+}
+*/
+/*function f(){
+    let nome = 'João'
+    function g(){
+        console.log(nome)
+    }
+    return g
+}
+const resultadoDaF = f()
+resultadoDaF()
+*/
+/*function f(funcao){
+    console.log('f')
+    return funcao()
+}
+
+function g(){
+    console.log('g')
+    function outraFuncao(){
+        console.log('Fui criada por g')
+    }
+    return outraFuncao
+}
+console.log(f(g)()())
+*/
+//closures
+
+/*let umaFuncao = function(){
+    console.log('Fui armazenada em uma variável')
+    return () => console.log('oi')
+}
+umaFuncao()
+
+function f(funcao){
+    funcao()
+}
+f()*/
+/*class Pessoa{
+    public void andar(){
+
+    }
+    var teste = andar;
+}*/
+/*const a = 1
+const f = b => b + 1
+f(1)
+const f2 = () => 1*/
+
 // //funções
 // //functions
 // //arrow functions

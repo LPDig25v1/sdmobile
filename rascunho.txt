@@ -1,0 +1,5 @@
+token
+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
+
+token + email
+https://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@github.com/LPDig25v1/sdmobile
