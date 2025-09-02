@@ -1,54 +1,254 @@
-/*function saudacoesFactory(saudacao, nome){
-    return function ()
-{}
+//Execução síncrona (bloqueante)
+//Execução Assíncrona (não bloqueante)
+//CPU Bound
+//IO Bound
+const fs = require('fs')
+const abrirArquivo = function(nomeArquivo){
+    //callback: você define. mas não chama
+    function exibirConteudo(erro, conteudo){
+        if(erro){
+            console.log(`Erro: $erro`)
+        }
+        else{
+            console.log(`Conteúdo: ${conteudo.toString()}`)
+            const dobro =
+                Number(conteudo.toString() * 2)
+            const finalizar = (erro) => {
+                if(erro){
+                    console.log(`Erro na Escrita: ${erro}`)
+                }
+                else{
+                    console.log("Escrita OK!")
+                }
+                console.log('D')
+            }
+            fs.writeFile(
+                'dobro.txt',
+                dobro.toString()
+            )
+        }
+        console.log('C')
+    }
+    fs.readFile(nomeArquivo, exibirConteudo)
+    console.log('B')
+    //console.log('abrirArquivo continua...')
+}
+abrirArquivo('arquivo.txt')
+console.log('A')
+
+/*function demorada(){
+    const atualMais2 = new Date().getTime() + 2000
+    while(new Date().getTime() <= atualMais2);
+    const d = 8 + 4
+    return d
+}
+const a = 2 + 3
+const b = 5 + 9
+//const d = demorada()
+setTimeout(() => {
+    const d = demorada()
+    console.log(`d1: ${d}`)
+}, 1000)
+setTimeout(() => {
+    const d = demorada()
+    console.log(`d2: ${d}`)
+}, 500)
+const e = 2 + a - b
+console.log(`e: ${e}`)
+*/
+
+/*const a = 2 + 7
+const b = 5
+console.log(a + b)
+*/
+
+/*console.log('Eu primeiro...')
+console.log('Agora eu...')
+console.log('Sempre serei o último...')
+*/
+
+//Objetos Javascript (JSON)
+//JavaScript Object Notation
+//Uma calculadora tem marca e modelo, além disso, ela sabe fazer soma e subtração de dois números: a soma, ela faz com arrow function sem usar return, a subtração, ela faz com function regular
+/*const calculadora = {
+    marca: 'Casio',
+    modelo: 'Simples',
+    operacoes: {
+        somar: (a, b) => a + b,
+        subtrair: function(a, b){
+            return a-b
+        } 
+    }
+}
+for(let operacao of Object.keys(calculadora.operacoes)){
+    console.log(´${operacao}: ${calculadora.operacoes[operacao](2, 3)}´)
+}
+//console.log(calculadora.operacoes.somar(2, 3))
+//console.log(calculadora.operacoes.subtrair(5, 2))
+//console.log(calculadora.modelo)
+*/
+
+//Uma concessionária que tem CNPJ e endereço (logradouro, número, bairro, cidade e estado) e um estoque de veículos. Cada veículo tem placa, marca e modelo. A concessionárioa pode ter a qualquer instante, 0 ou mais veículos.
+/*const concessionaria = {
+    cnpj: '24.803.100/7485-22',
+    endereco: {
+        logradouro: 'Avenida dos Estados',
+        numero: 85,
+        bairro: 'Campestre',
+        cidade: 'Santo André',
+        estado: 'São Paulo'
+    },
+    veiculos: [
+        {
+            placa: 'WRD-1E41',
+            marca: 'Honda',
+            modelo: 'City'
+        },
+        {
+            placa: 'KDS-5V00',
+            marca: 'Fiat',
+            modelo: 'Uno'
+        }
+    ]
+}
+for(let veiculos of concessionaria.veiculos){
+    console.log(veiculos.placa)
 }
 */
-/*function f(){
-    let nome = 'João'
-    function g(){
-        console.log(nome)
+
+//console.log(concessionaria.endereco.logradouro)
+//console.log(concessionaria.veiculos[0].modelo)
+
+//Uma pessoa se chama Maria, tem 21 anos e mora na rua ABC, número 200, bairro Vila J.
+/*const pessoa = {
+    nome: 'Maria',
+    idade: 21,
+    endereco: {
+        logradouro: 'rua ABC',
+        numero: 200,
+        bairro: 'Vila J'
     }
-    return g
 }
-const resultadoDaF = f()
-resultadoDaF()
+console.log(pessoa.endereco.logradouro)
+console.log(pessoa['endereco'] ['numero'])
+console.log(pessoa.endereco['bairro'])
+console.log(pessoa['endereco'],bairro)
 */
-/*function f(funcao){
-    console.log('f')
-    return funcao()
-}
 
-function g(){
-    console.log('g')
-    function outraFuncao(){
-        console.log('Fui criada por g')
-    }
-    return outraFuncao
+//Uma pessoa que se chama João tem 17 anos
+/*const pessoa = {
+    nome: 'João',
+    idade: 17
 }
-console.log(f(g)()())
+//. e []
+console.log(pessoa.nome)
+console.log(pessoa.idade)
+console.log(pessoa['nome'])
+console.log(pessoa['idade'])
 */
-//closures
 
-/*let umaFuncao = function(){
-    console.log('Fui armazenada em uma variável')
-    return () => console.log('oi')
-}
-umaFuncao()
+// function eAgora(){
+//   let cont = 1
+//   function f1(){
+//     console.log(++cont)
+//   }
+//   cont++
+//   function f2(){
+//     console.log(cont++)
+//     return cont
+//   }
+//   cont++
+//   return {f1, f2}
+// }
 
-function f(funcao){
-    funcao()
-}
-f()*/
-/*class Pessoa{
-    public void andar(){
+// const res = eAgora()
+// res.f1()
+// console.log(res.f2())
 
-    }
-    var teste = andar;
-}*/
-/*const a = 1
-const f = b => b + 1
-f(1)
-const f2 = () => 1*/
+// function saudacoesFactory(saudacao, nome){
+//   return function(){
+//     console.log(`${saudacao}, ${nome}`)
+//   }
+// }
+
+// const oiJoao = saudacoesFactory('Oi', 'João')
+// const tchauJoao = saudacoesFactory('Tchau', 'João')
+// oiJoao()
+// tchauJoao()
+
+
+// function f(){
+//   let nome = 'João'
+//   function g(){
+//     console.log(nome)
+//   }
+//   return g
+// }
+// const resultadoDaF = f()
+// resultadoDaF()
+
+// function f(funcao){
+//   console.log('f')
+//   return funcao()
+// }
+
+// function g(){
+//   console.log('g')
+//   function outraFuncao(){
+//     console.log('Fui criada por g')
+//     return () => "a"
+//   }
+//   return outraFuncao
+// }
+// console.log(f(g)()())
+
+// //closures
+// let umaFuncao = function(){
+//   console.log('Fui armazenada em uma variável')
+//   return () => console.log('oi')
+// }
+// umaFuncao()()
+
+// function f(funcao){
+//   console.log(funcao)
+//   funcao()
+// }
+// f(umaFuncao())
+
+// class Pessoa{
+//   public void andar(){
+
+//   }
+//   var teste = andar;
+// }
+// const a = 1
+// const f = b => b + 1
+// f(1)
+// const f2 = () => 1
+
+//arrow functions
+// const ehPar = n => {
+//   n % 2 === 0
+// }
+// console.log(ehPar(5))
+// const triplo = (n) => {
+//   console.log(n)
+//   return 3 * n
+// }
+// console.log(triplo(10))
+// const dobro = v => v * 2
+// console.log(dobro(5))
+// const f5 = a => 1
+// console.log(f5())
+// const f4 = (a, b) => a + b
+// console.log(f4(2, 3))
+// const f3 = a => console.log(a)
+// f3(1)
+// const f2 = () => console.log('oi')
+// f2()
+// const f1 = a => {console.log(a)}
+// f1(1)
+// () => {}
 
 // //funções
 // //functions
