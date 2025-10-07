@@ -1,5 +1,5 @@
 {
-  "name": "observacoes",
+  "name": "barramento",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^5.1.0",
-    "uuid": "^13.0.0"
+    "axios": "^1.12.2",
+    "express": "^5.1.0"
   }
 }
