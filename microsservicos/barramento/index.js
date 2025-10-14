@@ -5,12 +5,13 @@ const app = express()
 app.use(express.json())
 
 //POST /eventos
-app.post('/eventos', (req,res) => {
+app.post('/eventos', (req, res) => {
     //const evento = req.body
     const { body: evento } = req
     console.log(evento)
     axios.post('http://localhost:4000/eventos', evento)
     axios.post('http://localhost:5000/eventos', evento)
+    axios.post('http://localhost:6000/eventos', evento)
     res.end()
 })
 
