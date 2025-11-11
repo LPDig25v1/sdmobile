@@ -18,7 +18,9 @@ app.post('/lembretes/:id/observacoes', (req, res) => {
     const { texto } = req.body
     const observacao = {
         id: idObs,
-        texto
+        texto,
+        idLembrete: req.params.id,
+        status: 'Aguardando'
     }
     const observacoes = baseObservacoes[req.params.id] || []
     observacoes.push(observacao)

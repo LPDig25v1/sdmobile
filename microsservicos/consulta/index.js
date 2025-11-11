@@ -25,7 +25,7 @@ app.post('/eventos', (req, res) => {
     console.log(evento)
     try{
         const funcao = funcoes[evento.tipo]
-        
+        funcao(evento.dados)
     }
     catch(e){}
 })
