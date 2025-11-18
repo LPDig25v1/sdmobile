@@ -14,7 +14,11 @@ const funcoes = {
     }
 }
 app.post('/eventos', (req, res) => {
-
+    try{
+        const evento = req.body
+        funcoes[evento.tipo]
+    }
+    catch(e){}
 })
 
 const port = 7000

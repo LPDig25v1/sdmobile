@@ -6,12 +6,24 @@ app.use(express.json())
 /*
 {
     1: [
-        {id: 1000, texto: comprar açúcar, idLembrete: 1}
+        {id: 1000, texto: comprar açúcar, idLembrete: 1, status: "Aguardando"}
         {id: 1001, texto: 2 colheres de pó, idLembrete: 1}
     ]
 }
 */
 const baseObservacoes = {}
+
+const funcoes = {
+    ObservacaoClassificada: (observacao) => {
+        const observacoes = baseObservacoes[observacao.idLembrete]
+        const obsParaAtualizar = observacoes.find(o => o.id === observacao.id)
+        obsParaAtualizar.status = observacao.status
+        axios.post('http://localhost:10000/eventos', {
+            tipo: 'ObservacaoAtualizada',
+            dados: observacao
+        })
+    },
+}
 //POST /lembretes/1/observacoes
 app.post('/lembretes/:id/observacoes', (req, res) => {
     const idObs = uuidv4()
@@ -38,9 +50,12 @@ app.get('/lembretes/:id/observacoes', (req, res) => {
 })
 
 app.post('/eventos', function(req, res){
-    const evento = req.body
-    console.log(evento)
-    res.end()
+    try{
+        const evento = req.body
+        console.log(evento)
+        funcoes[evento.tipo](evento.dados)
+    }
+    catch(e){}
 })
 
 const port = 5000
